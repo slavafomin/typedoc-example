@@ -1,0 +1,30 @@
+{
+  "name": "typedoc-example",
+  "version": "0.0.0",
+  "description": "An example project using TypeDoc",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "run-s clean compile extract-types docs",
+    "compile": "tsc",
+    "extract-types": "api-extractor run --local --verbose",
+    "docs": "run-s api-documenter typedoc",
+    "api-documenter": "api-documenter markdown -i ./temp/ -o ./docs/api-documenter/",
+    "typedoc": "typedoc --out ./docs/typedoc ./index.ts",
+    "clean": "rimraf ./dist/ ./temp/ ./docs/"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.19.27",
+    "@microsoft/api-extractor": "^7.33.7",
+    "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/node": "^18.11.17",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.23.23",
+    "typescript": "^4.9.4"
+  }
+}
